@@ -21,5 +21,6 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 				<logger level="INFO" doc:name="Logger" doc:id="7dc1769e-f783-4832-86b9-4130d188c246" message="@this is default"/>
 			</otherwise>
 		</choice>
+		<logger level="INFO" doc:name="Logger" doc:id="ae82f9b0-c54d-402f-acb1-1b375a79f132" />
 	</flow>
 </mule>
