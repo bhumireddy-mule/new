@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="8b852e75-a91f-4ec4-9d85-b8f1989859a0" >
+		<http:listener-connection host="localhost" port="8086" />
+	</http:listener-config>
+	<http:listener-config name="HTTP_Listener_config1" doc:name="HTTP Listener config" doc:id="bf510939-a031-4190-9b28-d6913eee7da7" >
+		<http:listener-connection host="localhost" port="8087" />
+	</http:listener-config>
+	<flow name="router-6-1-20Flow" doc:id="d342d3f2-3b10-414c-9f7c-c934a980495b" >
+		<http:listener doc:name="Listener" doc:id="6c249f17-2b25-4b87-b120-59c5633de149" config-ref="HTTP_Listener_config1" path="/router"/>
+		<set-variable value="#[attributes.queryParams.contry]" doc:name="Set Variable" doc:id="05fb7280-995c-4986-9f41-7bf26dc47aca" variableName="setname"/>
+		<choice doc:name="Choice" doc:id="a11d622d-e796-4606-9f21-d9f62061fd77" >
+			<when expression='#[vars.setname ==  "raja"]'>
+				<logger level="INFO" doc:name="Logger" doc:id="46a6b82a-501a-4f36-9713-5b84f9cad502" message="@this is india"/>
+			</when>
+			<otherwise >
+				<logger level="INFO" doc:name="Logger" doc:id="7dc1769e-f783-4832-86b9-4130d188c246" message="@this is default"/>
+			</otherwise>
+		</choice>
+	</flow>
+</mule>
